@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Read-From-Live-Camera-MVC-Core", "Read-From-Live-Camera-MVC-Core.csproj", "{6339958E-81D0-4C9F-B2BF-994579DA7F00}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6339958E-81D0-4C9F-B2BF-994579DA7F00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6339958E-81D0-4C9F-B2BF-994579DA7F00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6339958E-81D0-4C9F-B2BF-994579DA7F00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6339958E-81D0-4C9F-B2BF-994579DA7F00}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0D450BE0-A477-45AB-82A2-5D79D0FB6960}
+	EndGlobalSection
+EndGlobal
