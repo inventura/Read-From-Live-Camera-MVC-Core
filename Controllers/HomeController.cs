@@ -64,14 +64,19 @@ namespace Read_From_Live_Camera_MVC_Core.Controllers
                 {
                     // Convert base64 string from the client side into byte array
                     byte[] bitmapArrayOfBytes = Convert.FromBase64String(inputs.image);
+                    /*
+                    Bitmap bp = (Bitmap)Bitmap.FromStream(new MemoryStream(bitmapArrayOfBytes));
+                    bp.Save("c:\\temp\\barcode.jpg",ImageFormat.Jpeg);
+                    */
                     // Create Bytescout.BarCodeReader.Reader object
                     Reader reader = new Reader();
                     // Get the barcode type from user's selection in the combobox
-                    reader.BarcodeTypesToFind = Barcode.GetBarcodeTypeToFindFromCombobox(inputs.type);
+                    //reader.BarcodeTypesToFind = Barcode.GetBarcodeTypeToFindFromCombobox(inputs.type);
+                    reader.BarcodeTypesToFind.QRCode = true;
                     // Read barcodes from image bytes
                     reader.ReadFromMemory(bitmapArrayOfBytes);
                     // Check whether the barcode is decoded
-                    if (reader.FoundBarcodes != null)
+                    if (reader.FoundBarcodes != null && reader.FoundBarcodes.Any())
                     {
                         // Add each decoded barcode into the string 
                         foreach (FoundBarcode barcode in reader.FoundBarcodes)
