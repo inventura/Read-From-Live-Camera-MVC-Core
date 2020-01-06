@@ -118,11 +118,12 @@ function UploadToCloud() {
     $("#upload").attr('disabled', 'disabled');
     $("#upload").attr("value", "Uploading...");
     var img = canvas.toDataURL('image/jpeg', 0.9).split(',')[1];
+    var data = JSON.stringify({ image: img, type: selection });
     // send AJAX request to the server with image data 
     $.ajax({
         url: "/Home/UploadHtml5",
         type: "POST",
-        data: "{ 'image': '" + img + "' , 'type': '" + selection + "'}",
+        data: data,
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         // on success output the result returned by the server side (See HTML5Camera.aspx)
@@ -144,7 +145,7 @@ function UploadToCloud() {
             $("#upload").removeAttr('disabled');
             $("#upload").attr("value", "Upload");
         },
-        async: false
+        async: true
     });
     timer = setTimeout(UploadToCloud, 3000);  // will capture new image to detect barcode after 3000 mili second
 }

@@ -40,9 +40,21 @@ namespace Read_From_Live_Camera_MVC_Core.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        [HttpPost]
-        public ActionResult UploadHtml5(string image, string type)
+        public class Dto
         {
+            public string image {get; set;}
+            public string type {get; set;}
+        }
+
+        [HttpPost]
+        //public ActionResult UploadHtml5(string image, string type)
+        public ActionResult UploadHtml5([FromBody] Dto inputs)
+        {
+            if (inputs?.image == null || inputs?.type == null)
+            {
+                return Json(new { d = $"image is {inputs?.image}, type is {inputs?.type}" });
+            }
+
             try
             {
                 StringBuilder send = new StringBuilder();
@@ -51,11 +63,11 @@ namespace Read_From_Live_Camera_MVC_Core.Controllers
                 lock (send)
                 {
                     // Convert base64 string from the client side into byte array
-                    byte[] bitmapArrayOfBytes = Convert.FromBase64String(image);
+                    byte[] bitmapArrayOfBytes = Convert.FromBase64String(inputs.image);
                     // Create Bytescout.BarCodeReader.Reader object
                     Reader reader = new Reader();
                     // Get the barcode type from user's selection in the combobox
-                    reader.BarcodeTypesToFind = Barcode.GetBarcodeTypeToFindFromCombobox(type);
+                    reader.BarcodeTypesToFind = Barcode.GetBarcodeTypeToFindFromCombobox(inputs.type);
                     // Read barcodes from image bytes
                     reader.ReadFromMemory(bitmapArrayOfBytes);
                     // Check whether the barcode is decoded
